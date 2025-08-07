@@ -33,11 +33,11 @@ def get_krx_market_price_info(trdDd):
         items = data.get("OutBlock_1", [])
     except Exception as e:
         print("🚫 KRX 시가총액 데이터 요청 오류:", e)
-        return pd.DataFrame(columns=["단축코드", "종목명", "시장구분", "시가총액"])
+        return pd.DataFrame(columns=["시장구분", "표준코드","단축코드", "종목명", "시가총액", "상장주식수", "종가"])
 
     if not items:
         print("⚠️ KRX 응답에 유효한 데이터 없음")
-        return pd.DataFrame(columns=["단축코드", "종목명", "시장구분", "시가총액"])
+        return pd.DataFrame(columns=["시장구분", "표준코드","단축코드", "종목명", "시가총액", "상장주식수", "종가"])
 
     df = pd.DataFrame(items)
 
@@ -46,11 +46,13 @@ def get_krx_market_price_info(trdDd):
         "ISU_CD" : "표준코드",
         "ISU_SRT_CD": "단축코드",
         "ISU_ABBRV": "종목명",
-        "MKTCAP": "시가총액"
+        "MKTCAP": "시가총액",
+        "LIST_SHRS":"상장주식수",
+        "TDD_CLSPRC":"종가"
     }, inplace=True)
 
     # 정제
-    df = df[["시장구분", "표준코드","단축코드", "종목명", "시가총액"]]
+    df = df[["시장구분", "표준코드","단축코드", "종목명", "시가총액", "상장주식수", "종가"]]
     df = df[df["시장구분"] != "KONEX"]
     df["시장구분"] = df["시장구분"].str.replace("KOSDAQ GLOBAL", "KOSDAQ")
     df["시가총액"] = pd.to_numeric(df["시가총액"].str.replace(",", ""), errors="coerce").fillna(0)
