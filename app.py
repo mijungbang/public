@@ -6,7 +6,7 @@ from streamlit.components.v1 import html
 
 # 📄 페이지 설정
 st.set_page_config(page_title="KRX 시가총액 데이터", layout="centered")
-st.title("💹 KRX 시가총액 데이터 조회")
+st.title("💹 KRX 정보데이터시스템 - [12001] 전종목 시세 조회")
 
 # 📅 날짜 선택
 today = datetime.date.today()
