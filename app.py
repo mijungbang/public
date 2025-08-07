@@ -10,10 +10,10 @@ st.title("💾 KRX 전종목 시세 조회")
 
 # 📅 날짜 선택
 today = datetime.date.today()
-d1 = st.date_input("1️⃣ 기준일 선택", value=today)
+d1 = st.date_input("📅 기준일 선택", value=today)
 
 # ▶️ 조회 버튼
-search_clicked = st.button("2️⃣ 시가총액 조회", use_container_width=True)
+search_clicked = st.button("시가총액 조회", use_container_width=True)
 
 # 🔍 조회 실행
 if search_clicked:
@@ -63,7 +63,7 @@ if search_clicked:
                 border-radius:4px;
                 cursor:pointer;
                 transition: background-color 0.3s;
-            ">📋 3️⃣ 복사</button>
+            ">📋 복사</button>
         </div>
         <script>
             function copyToClipboard() {{
