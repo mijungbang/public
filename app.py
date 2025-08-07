@@ -5,15 +5,15 @@ from fnc import get_krx_market_price_info
 from streamlit.components.v1 import html
 
 # 📄 페이지 설정
-st.set_page_config(page_title="KRX 시가총액 데이터", layout="centered")
-st.title("💾 KRX 전종목 시세 조회")
+st.set_page_config(page_title="[12001] KRX 전종목 시세 조회", layout="centered")
+st.title("[12001] KRX 전종목 시세 조회")
 
 # 📅 날짜 선택
 today = datetime.date.today()
 d1 = st.date_input("📅 기준일 선택", value=today)
 
 # ▶️ 조회 버튼
-search_clicked = st.button("시가총액 조회", use_container_width=True)
+search_clicked = st.button("시가총액 조회", use_container_width=True, type="primary")
 
 # 🔍 조회 실행
 if search_clicked:
